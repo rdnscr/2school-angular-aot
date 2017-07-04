@@ -32,7 +32,7 @@ type StoreType = {
  */
 @NgModule({
   bootstrap: [AppComponent],
-  declarations: [AppComponent, NoContentComponent,],
+  declarations: [AppComponent, NoContentComponent],
   imports: [BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, MaterialModule,
     RouterModule.forRoot(ROUTES, { useHash: false }), CommonModule.forRoot()],
 
