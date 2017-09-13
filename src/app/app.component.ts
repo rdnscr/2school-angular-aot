@@ -10,11 +10,10 @@ import { Route } from '@angular/router';
  */
 @Component({
   selector: 'app',
-  styles: [ 'h1 { color: #00BCD4; }' ],
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  public name = 'Angular 2 Webpack Starter';
+  public name = '2BIT Angular Demos';
   public navItems: Route[];
 
   constructor() {
