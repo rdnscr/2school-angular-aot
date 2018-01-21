@@ -3,17 +3,17 @@ import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 import { TodoService } from './services';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'todo',
     templateUrl: './todo.component.html',
 })
 export class TodoComponent implements OnInit, OnDestroy {
-    private todos: TodoItem[];
+    public todos: TodoItem[];
     private orig: TodoItem[];
 
-    constructor(private todoService: TodoService, private snackBar: MdSnackBar) {
+    constructor(private todoService: TodoService, private snackBar: MatSnackBar) {
 
     }
 
@@ -41,8 +41,8 @@ export class TodoComponent implements OnInit, OnDestroy {
     }
 
     private cloneArray(origArray: any[]) {
-        let newArray = [];
-        for (let element of origArray) {
+        const newArray = [];
+        for (const element of origArray) {
             if (element) {
                 newArray.push(this.merge({}, element));
             }

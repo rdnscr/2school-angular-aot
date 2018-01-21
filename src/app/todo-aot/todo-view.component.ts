@@ -1,22 +1,19 @@
-import { TodoItem } from '../common';
 import { Component, Input, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 import { Subject } from 'rxjs/Subject';
-import { MdSnackBar } from '@angular/material';
+import { Action, dispatcherToken } from '../state';
+import { TodoItem } from '../common';
 
 @Component({
-    selector: 'todo-list',
-    templateUrl: './todo-list.component.html'
+    selector: 'todo-view',
+    templateUrl: './todo-view.component.html'
 })
-export class TodoListComponent {
+export class TodoViewComponent {
     @Input()
     public items: TodoItem[];
     @Output()
     public reset = new EventEmitter<void>();
-
-    constructor(private snackBar: MdSnackBar) {
-
-    }
 
     public get itemsOpen(): TodoItem[] {
         return this.filterCheckedBy(false);
@@ -24,12 +21,6 @@ export class TodoListComponent {
 
     public get itemsDone(): TodoItem[] {
         return this.filterCheckedBy(true);
-    }
-
-    public onChecked(checked: boolean, item: TodoItem) {
-        item.checked = checked;
-        item.lastModified = new Date();
-        this.snackBar.open('checked / unchecked item', null, { duration: 1500 });
     }
 
     private filterCheckedBy(checked: boolean): TodoItem[] {

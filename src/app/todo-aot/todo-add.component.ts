@@ -1,4 +1,4 @@
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { TodoItem } from '../common';
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ export class TodoAddComponent {
 
     @ViewChild('description') private descriptionInput: ElementRef;
 
-    constructor(public snackBar: MdSnackBar) {
+    constructor(public snackBar: MatSnackBar) {
 
     }
 

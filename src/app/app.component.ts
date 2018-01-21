@@ -3,6 +3,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ROUTES } from './app.routes';
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { Route } from '@angular/router';
+import { stateToken } from './state';
 
 /*
  * App Component
@@ -10,13 +11,15 @@ import { Route } from '@angular/router';
  */
 @Component({
   selector: 'app',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   public name = '2BIT Angular Demos';
   public navItems: Route[];
 
-  constructor() {
+  constructor( @Inject(stateToken) public state: ReplaySubject<PlaygroundState>) {
     this.navItems = ROUTES.filter((route) => route.data);
   }
 
